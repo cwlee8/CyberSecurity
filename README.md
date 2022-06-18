@@ -129,7 +129,9 @@ num_logs = 7
    
  
 3. Command using `auditd` to set rules for `/etc/shadow`, `/etc/passwd` and `/var/log/auth.log`: 
-sudo nano /etc/audit/rules.d/audit.rules
+
+
+        sudo nano /etc/audit/rules.d/audit.rules
  
  
  
@@ -138,27 +140,37 @@ sudo nano /etc/audit/rules.d/audit.rules
  
     ##watch
  
--w /etc/shadow -p wra -k hashpass_audit
+
+
+        -w /etc/shadow -p wra -k hashpass_audit
  
--w /etc/passwd -p wra -k userpass_audit
- 
--w /var/log/auth.log -p wra -k authlog_audit
+        -w /etc/passwd -p wra -k userpass_audit
+
+        -w /var/log/auth.log -p wra -k authlog_audit
  
  
  
 4. Command to restart `auditd`: 
-systemctl restart auditd
+
+
+        systemctl restart auditd
  
  
  
  
 5. Command to list all `auditd` rules: 
-sudo auditctl -l
+
+
+        sudo auditctl -l
 6. Command to produce an audit report: 
-sudo aureport -au
+
+
+        sudo aureport -au
  
 7. Create a user with `sudo useradd attacker` and produce an audit report that lists account modifications: 
-sudo aureport -m
+
+
+        sudo aureport -m
  
  
  
@@ -166,7 +178,9 @@ sudo aureport -m
 sudo auditctl -w /var/log/cron
  
 9. Command to verify `auditd` rules: 
-sudo auditctl -l
+
+
+        sudo auditctl -l
  
  
  
